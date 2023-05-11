@@ -1,0 +1,58 @@
+
+/* users register page design css start form here */
+div.userRegisterDiv div.registerRow {
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+}
+div#UserRegCardHeader img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-left: auto;
+}
+
+div#UserRegCardHeader {
+    display: flex;
+    align-items: center;
+}
+div.registerCol button.form-control.btn {
+    background: #28cd28;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+body#registerBody {
+    background-image: url("../img/usersbanner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div#registerCard{
+   opacity: 0.9;
+}
+
+/* users register page design css end form here */
+/* custom login section design css start form here */
+div#login_row {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* custom login section design css end form here */
+label{
+    font-weight: bold;
+    font-style: italic;
+}
+
+label.error{
+    color: red;
+}
+font{
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+}
