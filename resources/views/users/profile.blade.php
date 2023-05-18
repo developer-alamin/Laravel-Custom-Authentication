@@ -182,6 +182,8 @@
     <script type="text/javascript" src="{{asset('js/axios.min.js')}}"></script>
      <!-- MDB -->
      <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
+     {{-- Sweet Alert cdn add start form here --}}
+     <script type="text/javascript" src="{{ asset('js/sweetalert.min.js') }}"></script>
     <script type="text/javascript">
       $(document).ready(function() {
         $(".alert").delay(4000).slideUp(200, function() {
@@ -247,10 +249,12 @@
             contentType: false,
             processData: false,
             success: function(response) {
+              swal("Success!", "Your Profile Update Successfully", "success");
               location.reload();
               $("#profileUpdateModal").modal('hide');
             },
             error: function(error) {
+              swal("Sorry!", "Your Profile Update Faild", "error");
               location.reload();
               $("#profileUpdateModal").modal('hide');
             }

@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use Session;
 use Hash;
+use Session;
+use Exception;
+use App\Models\User;
+use App\Models\verify;
+use App\Mail\verifyMail;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 
 class usersController extends Controller
@@ -34,8 +41,7 @@ class usersController extends Controller
    		  $fileName = time().'/'.date('Y').'/'.date('m').'.'.$file->getClientOriginalExtension();
         $file->storeAs('public/img/',$fileName);
 
-       try {
-        User::insert([
+       $users = User::create([
           'users_name'=>$req->users_name,
           'users_father'=>$req->users_father,
           'users_mother'=>$req->users_mother,
@@ -43,14 +49,17 @@ class usersController extends Controller
           'users_work' =>$req->users_work,
           'users_email' =>$req->users_email,
           'users_password' =>Hash::make($req->users_pass),
-          'users_img'=> $addFileName,
-          'date' =>$req->date
+          'users_img'=> $addFileName
         ]);
 
-        return back()->with('success','Users Registered Successfully'); 
-       } catch (Exception $e) {
-        return redirect()->back()->with('error','Users Registered Faild');
-       }
+        verify::create([
+          'user_token' => Str::random(40),
+          'user_id' => $users->id
+        ]);
+        
+        Mail::to($users->users_email)->send(new verifyMail($users));
+
+        return back()->with('success','Users Registered Successfully...Please Your Email Cheack..'); 
 
     }
 
@@ -64,15 +73,39 @@ class usersController extends Controller
       $users = User::where('users_email',$request->log_email)->first();
       if($users == true){
         if (Hash::check($request->log_pass,$users->users_password)) {
-          $request->Session()->put('logId',$users->id);
-           return redirect('users/profile');
+          if ($users->users_email_verified_at == null) {
+            return back()->with('error','Please Your Mail Check The Email Verify Before Login');
+            return redirect(route('logout'));
+          }else{
+            $request->Session()->put('logId',$users->id);
+            return redirect('users/profile');
+          }
         }else{
-          return back()->with('faild','Please Your Register Password');
+          return back()->with('error','Please Your Register Password');
         }
       }else{
-        return back()->with('faild','Please Your Register gmail');
+        return back()->with('error','Please Your Register gmail');
       }
     
+   }
+
+   public function usersVerify($token)
+   {
+      $verifyToken = verify::where('user_token',$token)->first();
+      
+      if (isset($verifyToken)) {
+      $userVerify = $verifyToken->User;
+        if (!($userVerify->users_email_verified_at)) {
+          $userVerify->users_email_verified_at = Carbon::now();
+          $userVerify->save();
+          return redirect(route('login'))->with('success','Your Email Has Been Verifyed');
+        }else{
+          return redirect(route('login'))->with('error','Your Email Already Verifyed');
+        }
+      }else{
+        return redirect(route('users.register'))->with('error','Please Again Register Then Email Verify..');
+      }
+     
    }
 
 

@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\verify;
+use App\Mail\testMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Hash;
-    
 use Session;
 
 
@@ -22,7 +25,7 @@ class profileController extends Controller
         $data = User::where('id',Session::get('logId'))->first();
         return view('users.profile',compact('data'));
       }
-    
+
    }
 
    public function updateShow(Request $request)
@@ -39,7 +42,7 @@ class profileController extends Controller
 
          $http = $_SERVER['HTTP_HOST'];
          $addimg = "http://".$http."/storage/img/";
- 
+
          $file = $request->file('upimg');
          $addFileName = $addimg.time().'/'.date('Y').'/'.date('m').'.'.$file->getClientOriginalExtension();
    		$fileName = time().'/'.date('Y').'/'.date('m').'.'.$file->getClientOriginalExtension();
@@ -54,7 +57,7 @@ class profileController extends Controller
       }else{
          $addFileName = $request->preImg;
       }
-      
+
       $update = DB::table('users_table')->where('id',$request->updateId)->update([
          'users_name' => $request->upname,
          'users_father' => $request->upfname,
@@ -71,14 +74,19 @@ class profileController extends Controller
    public function test(Request $request)
    {
 
-      $img = 'http://127.0.0.1:8000/storage/img/1683803924/2023/5.jpg';
-      $explode = explode('/',$img);
-      $endImg = end($explode);
-      $a = prev($explode);
-      $aa = prev($explode);
-
-      if(Storage::deleteDirectory('public/img/'.$aa)){
-         echo "Deleted";
-      }
+      return Str::random(60);
    }
+
+
+    public function userTest()
+    {
+      return test::all();
+        return view('test');
+    }
+
+    public function testStore(Request $rq)
+    {
+      return $rq;
+      
+    }
 }

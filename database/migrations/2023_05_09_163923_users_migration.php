@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('users_mother');
             $table->string('users_phone');
             $table->string('users_email');
+            $table->string('users_email_verified_at')->nullable();
             $table->string('users_password');
             $table->string('users_img');
-            $table->string('date');
+            $table->timestamps();
         });
     }
 

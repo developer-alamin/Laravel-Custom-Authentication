@@ -84,12 +84,6 @@
                                 </div>
                               </div><br>
                               <div class="form-row">
-                                <div class="col-4">
-                                    <label for="date">Date:</label>
-                                    <input type="text" name="date" class="form-control date" placeholder="Enter Date..">
-                                </div>
-                              </div><br>
-                              <div class="form-row">
                                 <div class="col-12 registerCol" >
                                     <button type="submit" class="form-control btn">Submit</button>
                                    <a href="{{Route('login')}}">already have an account sign in</a>
@@ -114,7 +108,6 @@
     <script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
     {{-- jquery validation plugin cdn start form here --}}
     <script type="text/javascript" src="{{ asset('js/jquery.validate.js') }}"></script>
-
     <script type="text/javascript">
     const userinputImg = document.querySelector("#users_img");
     userinputImg.onchange = evt => {
@@ -164,9 +157,6 @@
                     minlength: 5,
                     maxlength: 7,
                     equalTo: "#users_pass"
-                },
-                date:{
-                	required: true
                 }
             },
             messages: {
@@ -194,8 +184,7 @@
                     minlength: "Your password must be 5 characters",
                     maxlength: "Password No More Then 7 characters",
                     equalTo: "Please enter the same password as above"
-                },
-                date:"Please Your Date&Time",
+                }
             }
         });
 	}

@@ -18,12 +18,17 @@
         <div class="row" id="login_row">
             <div class="col-5" id="login_collumn">
                 <div class="wrapper">
-                    @if(Session::has('faild'))
+                    @if(Session::has('error'))
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>{{Session::get('faild')}}</strong>
+                            <strong>{{Session::get('error')}}</strong>
                         </div>
-                        @endif
+                    @elseif(Session::has('success'))
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>{{Session::get('success')}}</strong>
+                        </div>
+                    @endif
                     <div class="text-center mt-4 name">
                         <h3>User Login...</h3>
                     </div>
@@ -58,7 +63,9 @@
      {{-- Jquery ui cdn start form here --}}
     <script type="text/javascript">
     $(document).ready(function(){
-       
+        $(".alert").delay(4000).slideUp(200, function() {
+            $(this).alert('close');
+        });
     });
     
     </script>
