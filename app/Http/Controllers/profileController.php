@@ -64,7 +64,6 @@ class profileController extends Controller
          'users_mother' => $request->upmother,
          'users_phone' => $request->upphone,
          'users_work' => $request->upwork,
-         'users_email' => $request->upemail,
          'users_img' => $addFileName
       ]);
       return $update;

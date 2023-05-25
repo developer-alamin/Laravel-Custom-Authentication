@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User Login Page.</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
      <!-- MDB -->
      <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}" rel="stylesheet"/>
@@ -12,6 +12,7 @@
      <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
      <link rel="stylesheet" href="{{asset('css/users.css')}}">
      <link rel="stylesheet" href="{{asset('css/login.css')}}">
+
 </head>
 <body>
     <section class="login_section">
@@ -35,31 +36,34 @@
                     </div>
                     @endif
                     <div class="text-center mt-4 name">
-                        <h3>User Login...</h3>
+                        <h3>Admin Login...</h3>
                     </div>
-                    <form action="{{route('users.login')}}" method="post" class="p-3 mt-3" id="login_validation">
+                    <form action="{{route('admin.login')}}" method="post" class="p-3 mt-3" id="login_validation">
                         @csrf
                         <div class="form-field d-flex align-items-center">
                             <span class="far fa-user"></span>
-                            <input type="email" value="{{old('log_email')}}" name="log_email" class="log_email"  placeholder="Please Eamil">
+                            <input type="number" value="{{old('admin_id')}}" name="admin_id" class="admin_id"  placeholder="{{ __('Admin Id') }}">
                         </div>
-                        <font>{{($errors->has('log_email'))?($errors->first('log_email')):''}}</font>
+                        <font>{{($errors->has('admin_id'))?($errors->first('admin_id')):''}}</font>
                         <div class="form-field d-flex align-items-center">
                             <span class="fas fa-key"></span>
-                            <input type="password" name="log_pass" class="log_pass" placeholder="Please Password">
+                            <input type="password" name="ad_log_pass" class="ad_log_pass" placeholder="{{ __('Admin Password') }}">
                         </div>
-                        <font>{{($errors->has('log_pass'))?($errors->first('log_pass')):''}}</font>
-                        <button class="btn mt-3">Login</button>
+                        <font>{{($errors->has('ad_log_pass'))?($errors->first('ad_log_pass')):''}}</font>
+                        <button class="btn mt-3">Admin Login</button>
                     </form>
                     <div class="text-center fs-6">
-                        <a class="nav-link" href="{{ Route('users.register')}}">Sign up</a>
-                        <a class="nav-link" href="{{ Route('adminform.login') }}">Admin Login</a>
-                        <a class="nav-link" href="{{ Route('adminform.register') }}">Admin Register</a>
+                        <a class="nav-link" href="{{ route('login') }}">User Login</a>
+                        <a class="nav-link" href="{{ route('adminform.register') }}">Admin Register</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
      {{-- JQuery js start form here --}}
      <script type="text/javascript" src="{{asset('js/jquery-1.10.2.js')}}"></script>
      {{-- propper js start form here --}}
@@ -67,13 +71,14 @@
      {{-- bootstrap min js start form here --}}
      <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
      {{-- Jquery ui cdn start form here --}}
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $(".alert").delay(4000).slideUp(200, function() {
-            $(this).alert('close');
+
+     <script type="text/javascript">
+        $(document).ready(function(){
+            $(".alert").delay(4000).slideUp(200, function() {
+                $(this).alert('close');
+            });
         });
-    });
-    
-    </script>
+        
+        </script>
 </body>
 </html>

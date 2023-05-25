@@ -43,11 +43,9 @@ $(document).ready(function() {
       showButtonPanel: true
 	 });
 
-	  toastr.options.extendedTimeOut = 3000; //1000;
+	   toastr.options.extendedTimeOut = 3000; //1000;
       toastr.options.timeOut = 3000;
       toastr.options.fadeOut = 3000;
       toastr.options.fadeIn = 3000;
 
 })
-
-

@@ -141,22 +141,16 @@
             <label for="upmother">Mother:</label>
             <input type="text" id="upmother" name="upmother" class="form-control">
           </div>
-          <div class="col-lg-4">
-            <label for="upemail">Email:</label>
-            <input type="email" id="upemail" name="upemail" class="form-control">
-          </div>
           <div class="col-4">
               <label for="upphone">Phone:</label>
               <input type="number" name="upphone" id="upphone" class="form-control">
           </div>
+          <div class="col-lg-4">
+            <label for="upwork">Work:</label>
+            <input type="text" id="upwork" name="upwork" class="form-control">
+          </div>
       </div>
       <br>
-      <div class="form-row">
-        <div class="col-lg-4">
-          <label for="upwork">Work:</label>
-          <input type="text" id="upwork" name="upwork" class="form-control">
-        </div>
-      </div>
         <div class="notfundImgDiv d-none">
           <img class="" src="{{asset('img/no_data_found_4x.webp')}}">
         </div>
@@ -195,7 +189,22 @@
          $('.profileEditDiv h4').html(id);
          $("#profileUpdateModal").modal('show');
          updateShow(id);
-        })
+        });
+
+        $(document).ready(()=>{
+            $('#upimg').change(function(){
+                const file = this.files[0];
+                if (file){
+                let reader = new FileReader();
+                reader.onload = function(event){
+                    console.log(event.target.result);
+                    $('.updatePreview').attr('src',event.target.result);
+                }
+                reader.readAsDataURL(file);
+                }
+            });
+        });
+
 
         user_Update();
         

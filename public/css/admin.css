@@ -1,0 +1,28 @@
+.CategoryDiv {background: #2547c5;color: #00ff43;font-weight: bold;text-align: center;}nav#sidenavAccordion {background: #b7b5df;}a.nav-link.beforeNav:hover::before{content: '';position: absolute;border-radius: 1000%;width: 12px;height: 12px;left: -4px;bottom: 16px;border: 2px solid #3917f9;transition: all 0.2s ease-in-out 0.2s;}div#pannelRow div.col-4 div.card {background: #b9ff2f;text-align: center;}div#pannelRow div.col-4 div.card div.card-body h4 {color: white;text-shadow: 2px 2px 2px #176a1e;}div.nothingData{text-align: center;}div.nothingData img{width: 300px;height: 300px;}td img{width: 50px;height: 50px;border-radius: 100%;}td p.verifyed {background: green;text-align: center;color: white;font-weight: 700;border-radius: 10px;}td p.nonverifyed{background: red;text-align: center;color: white;font-weight: 300;border-radius: 10px;}i.fa.fa-edit.tdEditIcon {font-size: 20px;color: green;width: 50%;font-weight: bold;text-align: center;cursor: pointer;}i.fas.fa-trash.tdDeleteIcon {font-size: 20px;color: #ff1333;font-weight: bold;width: 50%;cursor: pointer;text-align: center;}a img.adminImg {width: 45px;height: 45px;border-radius: 100%;}
+label{
+    font-weight: bolder;
+    font-style: italic;
+}
+
+font{
+    color: red;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+label.error{
+    color: red;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+img.onchange {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-left: auto;
+}
+div#AdminRegCardHeader {
+    display: flex;
+    align-items: center;
+}

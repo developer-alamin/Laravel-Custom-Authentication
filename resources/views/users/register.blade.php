@@ -17,15 +17,20 @@
         <div class="row registerRow">
             <div class="col-8 m-auto">
                 @if(Session::has('success'))
-                  <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>{{Session::get('success')}}</strong>
-                  </div>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{Session::get('success')}}</strong>
+                    </div>
                 @elseif(Session::has('error'))
-                <div class="alert alert-danger  alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>{{Session::get('error')}}</strong>
-                </div>
+                    <div class="alert alert-danger  alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{Session::get('error')}}</strong>
+                    </div>
+                @elseif(Session::has('faild'))
+                    <div class="alert alert-danger  alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{Session::get('faild')}}</strong>
+                    </div>
                 @endif
                 <div class="card" id="registerCard">
                     <div class="card-header" id="UserRegCardHeader">
