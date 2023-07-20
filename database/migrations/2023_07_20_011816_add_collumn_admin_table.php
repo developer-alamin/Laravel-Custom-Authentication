@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users_table',function(Blueprint $table)
+        Schema::table('admins_table',function(Blueprint $table)
         {
-           $table->string('users_work')->after('users_phone');
+            $table->string('admin_about')->after('admin_email');
+            $table->string('admin_bacImg')->after('admin_img');
         });
     }
 

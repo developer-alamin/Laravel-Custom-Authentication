@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Hash;
 use Session;
 use Exception;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\verify;
+use App\Models\student;
 use App\Mail\verifyMail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\studentVerify;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
 

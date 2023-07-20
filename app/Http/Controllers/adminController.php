@@ -56,15 +56,27 @@ class adminController extends Controller
 
     public function adminUsers()
     {
-        return view('admin.users');
+        $data = array();
+        if (Session::has('admin_id')) {
+            $data = Admin::where('admin_id',Session::get('admin_id'))->first();
+            return view('admin.users',compact("data"));
+        }
+        
     }
-    public function adminVerifyed()
-    {
-        return view('admin.verifyuser');
+    public function adminVerifyed(){
+        $data = array();
+        if (Session::has('admin_id')) {
+            $data = Admin::where('admin_id',Session::get('admin_id'))->first();
+            return view('admin.verifyuser',compact("data"));
+        }
     }
     public function adminNonVerifyed()
     {
-        return view('admin.nonverify');
+        $data = array();
+        if (Session::has('admin_id')) {
+            $data = Admin::where('admin_id',Session::get('admin_id'))->first();
+            return view('admin.nonverify',compact("data"));
+        }
     }
 
     // get users data functionally code start form here

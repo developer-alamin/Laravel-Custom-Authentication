@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "../../../school"
+		},
+		{
+			"path": "../../../resume"
+		},
+		{
+			"path": "../../../potfulio"
+		},
+		{
+			"path": "../../../pjs"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../employee"
+		},
+		{
+			"path": "../../../business"
+		},
+		{
+			"path": "../../../attendence"
+		},
+		{
+			"path": "../../../admin"
+		},
+		{
+			"path": "../../../sendmail"
+		}
+	],
+	"settings": {}
+}

@@ -5,6 +5,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\usersController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\adminLoginController;
+use App\Http\Controllers\admin\adminProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +48,7 @@ Route::group(['middleware'=>'useraccess'],function()
       Route::post('nonverifyDelete',[adminController::class,'nonverifyDelete'])->name('admin.nonveryfydel');
       Route::post('nonusersUpdateShow',[adminController::class,'nonusersUpdateShow'])->name('admin.nonuserupshow');
       Route::post('nonUserUpdate',[adminController::class,'nonUserUpdate'])->name('admin.nonUserUpdate');
+      Route::match(['get','post'],'/adminProfile',[adminProfileController::class,'adminProfile'])->name('admin.profile');
    });
    
 });
